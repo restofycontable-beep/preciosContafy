@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes y Precios - Contafy</title>
+    <meta name="description"
+        content="Descubre los planes de precios de Contafy. Procesamiento de documentos DIAN, gestión de empresas y dashboard intuitivo.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts - Manrope -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Material Symbols -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'manrope': ['Manrope', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#ff193e',
+                        'primary-dark': '#e6162f',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-manrope bg-gradient-to-br from-gray-100 via-gray-50 to-gray-200 text-gray-900">
+    <!-- Header -->
+    <header class="bg-white/95 backdrop-blur-sm shadow-md border-b border-gray-300">
+        <div class="max-w-7xl mx-auto pl-0 pr-4 sm:pr-6 lg:pr-8">
+            <div class="flex justify-start items-center h-48 py-6">
+                <!-- Logo -->
+                <div class="flex items-center space-x-4">
+                    <div class="flex-shrink-0">
+                        <img src="images/logoContafy.png" alt="Contafy" class="h-32 w-auto">
+                    </div>
+                    <h1 class="text-6xl font-bold text-primary">Contafy</h1>
+                </div>
+
+                <!-- Navigation -->
+                <div class="flex items-center">
+                    <!-- Navigation content removed -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="min-h-screen py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Title Section -->
+            <div class="text-center mb-16">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4 animate-fade-in">
+                    Planes y Precios
+                </h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-delay">
+                    Elige el plan perfecto para tu empresa. Todos incluyen procesamiento de documentos DIAN,
+                    gestión de empresas, dashboard intuitivo y soporte técnico.
+                </p>
+            </div>
+
+            <!-- Selected Plan Info -->
+            <div id="selected-plan-info" class="hidden mb-8 max-w-2xl mx-auto">
+                <div class="bg-primary/10 border border-primary/20 rounded-lg p-4">
+                    <div class="flex items-center">
+                        <span class="material-symbols-outlined text-primary mr-2">check_circle</span>
+                        <span class="text-gray-900 font-medium">
+                            Plan seleccionado: <span id="selected-plan-name" class="text-primary font-bold"></span>
+                        </span>
+                    </div>
+                    <p class="text-gray-600 mt-2" id="selected-plan-details"></p>
+                </div>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Plan Básico -->
+                <div class="pricing-card bg-white rounded-2xl shadow-lg border border-gray-200 p-8 relative hover:shadow-xl transition-all duration-300"
+                    data-plan="basico">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Plan Básico</h3>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-primary">$700.000</span>
+                            <span class="text-gray-600">/mes</span>
+                        </div>
+                        <div class="mb-6">
+                            <span class="text-lg font-semibold text-gray-700">500
+                                documentos/mes</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-green-500 mr-3">check_circle</span>
+                            <span class="text-gray-600">Procesamiento de documentos DIAN</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-green-500 mr-3">check_circle</span>
+                            <span class="text-gray-600">Gestión de empresas</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-green-500 mr-3">check_circle</span>
+                            <span class="text-gray-600">Dashboard intuitivo</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-green-500 mr-3">check_circle</span>
+                            <span class="text-gray-600">Soporte técnico</span>
+                        </li>
+                    </ul>
+
+                    <button data-plan="basico" data-price="700000" data-docs="500"
+                        class="plan-btn w-full bg-gray-100 text-gray-900 py-3 px-6 rounded-lg font-semibold hover:bg-gray-200 transition-colors duration-200">
+                        Seleccionar Plan
+                    </button>
+                </div>
+
+                <!-- Plan Intermedio (Recomendado) -->
+                <div class="pricing-card bg-white rounded-2xl shadow-xl border-2 border-primary p-8 relative hover:shadow-2xl transition-all duration-300"
+                    data-plan="intermedio">
+                    <!-- Recommended Badge -->
+                    <div id="recommended-badge" class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <span class="bg-primary text-white px-6 py-2 rounded-full text-sm font-semibold">
+                            Recomendado
+                        </span>
+                    </div>
+
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Plan Intermedio</h3>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-primary">$1.000.000</span>
+                            <span class="text-gray-600">/mes</span>
+                        </div>
+                        <div class="mb-6">
+                            <span class="text-lg font-semibold text-gray-700">1.000
+                                documentos/mes</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-green-500 mr-3">check_circle</span>
+                            <span class="text-gray-600">Procesamiento de documentos DIAN</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-green-500 mr-3">check_circle</span>
+                            <span class="text-gray-600">Gestión de empresas</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-green-500 mr-3">check_circle</span>
+                            <span class="text-gray-600">Dashboard intuitivo</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-green-500 mr-3">check_circle</span>
+                            <span class="text-gray-600">Soporte técnico</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-primary mr-3">star</span>
+                            <span class="text-gray-600">Características adicionales</span>
+                        </li>
+                    </ul>
+
+                    <button data-plan="intermedio" data-price="1000000" data-docs="1000"
+                        class="plan-btn w-full bg-primary text-white py-3 px-6 rounded-lg font-semibold hover:bg-primary-dark transition-colors duration-200">
+                        Seleccionar Plan
+                    </button>
+                </div>
+
+                <!-- Plan Avanzado -->
+                <div class="pricing-card bg-white rounded-2xl shadow-lg border border-gray-200 p-8 relative hover:shadow-xl transition-all duration-300"
+                    data-plan="avanzado">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Plan Avanzado</h3>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-primary">$3.000.000</span>
+                            <span class="text-gray-600">/mes</span>
+                        </div>
+                        <div class="mb-6">
+                            <span class="text-lg font-semibold text-gray-700">10.000
+                                documentos/mes</span>
+                        </div>
+                    </div>
+
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-green-500 mr-3">check_circle</span>
+                            <span class="text-gray-600">Procesamiento de documentos DIAN</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-green-500 mr-3">check_circle</span>
+                            <span class="text-gray-600">Gestión de empresas</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-green-500 mr-3">check_circle</span>
+                            <span class="text-gray-600">Dashboard intuitivo</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-green-500 mr-3">check_circle</span>
+                            <span class="text-gray-600">Soporte técnico</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="material-symbols-outlined text-primary mr-3">star</span>
+                            <span class="text-gray-600">Características premium</span>
+                        </li>
+                    </ul>
+
+                    <button data-plan="avanzado" data-price="3000000" data-docs="10000"
+                        class="plan-btn w-full bg-gray-100 text-gray-900 py-3 px-6 rounded-lg font-semibold hover:bg-gray-200 transition-colors duration-200">
+                        Seleccionar Plan
+                    </button>
+                </div>
+            </div>
+
+            <!-- Additional Information -->
+            <div class="mt-16 text-center">
+                <div
+                    class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-300 p-8 max-w-4xl mx-auto">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">
+                        Información Adicional
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">
+                                <span class="material-symbols-outlined inline mr-2">info</span>
+                                Facturación Mensual
+                            </h3>
+                            <p class="text-gray-600">
+                                Todos los planes se facturan mensualmente. Puedes cambiar o cancelar en cualquier
+                                momento.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900 mb-2">
+                                <span class="material-symbols-outlined inline mr-2">description</span>
+                                Límites de Documentos
+                            </h3>
+                            <p class="text-gray-600">
+                                Si te sobran documentos al final del mes, estos se pueden acumular para el siguiente
+                                mes. No se aplicarán tarifas preferenciales.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white/95 backdrop-blur-sm border-t border-gray-300 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center">
+                <h3 class="text-lg font-bold text-primary">Contafy</h3>
+                <p class="text-gray-600">Simplificando la contabilidad empresarial</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/theme-toggle.js"></script>
+</body>
+
+</html>
