@@ -1,4 +1,4 @@
-// Plan Selection Functionality
+// Plan Selection Functionality with Wompi Integration
 function initPlanSelection() {
     const planButtons = document.querySelectorAll('.plan-btn');
     const selectedPlanInfo = document.getElementById('selected-plan-info');
@@ -6,6 +6,9 @@ function initPlanSelection() {
     const selectedPlanDetails = document.getElementById('selected-plan-details');
     
     let selectedPlan = null;
+    
+    // Configuración de Wompi - Un solo enlace para todos los planes
+    const WOMPI_PAYMENT_LINK = 'https://checkout.wompi.co/l/VPOS_2Rdxcp';
     
     planButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -48,14 +51,19 @@ function initPlanSelection() {
             // Add selection styling to current button (red like middle plan)
             this.classList.remove('bg-gray-100', 'text-gray-900', 'hover:bg-gray-200');
             this.classList.add('bg-primary', 'text-white', 'hover:bg-primary-dark');
-            this.textContent = '✓ Plan Seleccionado';
+            this.textContent = '✓ Redirigiendo...';
             
             // Update selected plan info
             selectedPlan = { plan, price, docs };
             updateSelectedPlanInfo(plan, price, docs);
             
-            // Show success message
-            showNotification(`Plan ${plan.charAt(0).toUpperCase() + plan.slice(1)} seleccionado correctamente`, 'success');
+            // Show success message and redirect to payment
+            showNotification(`Plan ${plan.charAt(0).toUpperCase() + plan.slice(1)} seleccionado. Redirigiendo al pago...`, 'success');
+            
+            // Redirect to Wompi payment after 1.5 seconds
+            setTimeout(() => {
+                window.open(WOMPI_PAYMENT_LINK, '_blank');
+            }, 1500);
         });
     });
     
